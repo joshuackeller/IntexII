@@ -1,7 +1,206 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@page
+@model Crash
 @{
 }
 
+
 <div>page for editing crashes</div>
+
+<h1>Driving Records Database</h1>
+<form method="post" asp-controller="INSERTCONTROLLERNAME" asp-action="INSERTACTIONNAME">
+
+    <div class="form-group">
+
+        <input asp-for="crash_id" class="form-control" type="hidden" value="@Model.crash_id" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="crash_date">Crash date: </label>
+        <input asp-for="crash_date" class="form-control" />
+    </div>
+    @*<div class="form-group">
+        <label asp-for="crash_time">Crash time: </label>
+        <input asp-for="crash_time" class="form-control" />
+    </div>*@
+    <div class="form-group">
+        <label asp-for="route">Route: </label>
+        <input asp-for="route" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="milepoint">Milepoint: </label>
+        <input asp-for="milepoint" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="lat_utm_y">Lattitude: </label>
+        <input asp-for="lat_utm_y" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="long_utm_x">Longitude: </label>
+        <input asp-for="long_utm_x" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="main_road_name">Main road name: </label>
+        <input asp-for="main_road_name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="city">City: </label>
+        <input asp-for="city" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="county_name">County: </label>
+        <input asp-for="county_name" class="form-control" />
+    </div>
+    @*figure out if this needs to be a drop down or lets them enter what ever they would please*@
+    <div class="form-group">
+        <label asp-for="crash_severity_id">Crash Severity: </label>
+        <input asp-for="crash_severity_id" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Work zone related: </label>
+        <select asp-for="work_zone_related">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Pedestrian involved: </label>
+        <select asp-for="pedestrian_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Bicyclist involved: </label>
+        <select asp-for="bicyclist_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Motorcycle involved: </label>
+        <select asp-for="motorcycle_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Improper restraint: </label>
+        <select asp-for="improper_restraint">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Unrestrained: </label>
+        <select asp-for="unrestrained">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>DUI: </label>
+        <select asp-for="dui">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Intersection related: </label>
+        <select asp-for="intersection_related">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label>Wild animal related: </label>
+        <select asp-for="wild_animal_related">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Domestic animal related: </label>
+        <select asp-for="domestic_animal_related">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Overturn rollover: </label>
+        <select asp-for="overturn_rollover">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Commercial motor vehicle involved: </label>
+        <select asp-for="commercial_motor_veh_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Teenage driver involved: </label>
+        <select asp-for="teenage_driver_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Older driver involved: </label>
+        <select asp-for="older_driver_involved">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Night/dark conditions: </label>
+        <select asp-for="night_dark_condition">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Single vehicle: </label>
+        <select asp-for="single_vehicle">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Distracted driving: </label>
+        <select asp-for="distracted_driving">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Drowsy driving: </label>
+        <select asp-for="drowsy_driving">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Roadway departure: </label>
+        <select asp-for="roadway_departure">
+            <option value="true">True</option>
+            <option value="false">False</option>
+        </select>
+    </div>
+
+
+    <div class="float-end">
+        <input class="btn btn-primary" type="submit" value="INSERTVALUE HERE" />
+    </div>
+    <div asp-validation-summary="All"></div>
+</form>

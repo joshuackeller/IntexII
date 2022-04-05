@@ -141,7 +141,7 @@ namespace IntexII
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{pageNum?}");
                 endpoints.MapRazorPages();
                 endpoints.MapControllerRoute(
                     name: "admin",

@@ -57,10 +57,20 @@ namespace IntexII.Controllers
             return View(x);
         }
 
+        public IActionResult SingleRecord(int id)
+        {
+            var crash = repo.crashes
+                .Where(x => x.crash_id == id);
+
+            return View(crash);
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
     }
 }

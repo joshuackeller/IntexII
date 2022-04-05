@@ -8,14 +8,45 @@
 
 <div>Records</div>
 
-<div>
-    @foreach(var x in Model.crashes)
-            {
-    <div>@x.city</div>
-            }
-</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Crash ID</th>
+            <th>Main Road Name</th>
+            <th>City</th>
+            <th>County Name</th>
+            <th>Crash Severity</th>
+
+
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var a in Model.crashes)
+        {
+            <tr>
+                <td>@a.crash_id</td>
+                <td>@a.main_road_name</td>
+                <td>@a.city</td>
+                <td>@a.county_name</td>
+                <td>@a.crash_severity_id</td>
 
 
 
-<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Books" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>
+                <td>
+                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
 
+                </td>
+                
+
+                <td type="hidden" asp-for="@a.crash_id" />
+
+              
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>
