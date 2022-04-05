@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IntexII.Models;
+using IntexII.Models.ViewModels;
 
 namespace IntexII.Controllers
 {
@@ -13,9 +14,12 @@ namespace IntexII.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public IRDSRepo repo;
+
+        public HomeController(ILogger<HomeController> logger, IRDSRepo temp)
         {
             _logger = logger;
+            repo = temp;
         }
 
         public IActionResult Index()
@@ -26,6 +30,31 @@ namespace IntexII.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+
+
+        public IActionResult Records(int pageNum = 1)
+        {
+
+            var length = 300;
+
+
+            var x = new CrashesViewModel
+            {
+                crashes = repo.crashes
+                    .Skip(length * (pageNum - 1))
+                    .Take(length),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumCrashes = repo.crashes.Count(),
+                    CrashesPerPage = length,
+                    CurrentPage = pageNum
+                }
+                
+            };
+
+            return View(x);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -12,6 +12,7 @@ using IntexII.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using IntexII.Models;
 
 namespace IntexII
 {
@@ -78,7 +79,13 @@ namespace IntexII
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
+            services.AddDbContext<RDSContext>(options =>
+            {
+                options.UseMySql(Configuration["ConnectionStrings:RDSdatabase"];
+
+            });
+
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -98,6 +105,8 @@ namespace IntexII
                     options.ClientId = googleAuthNSection["ClientId"];
                     options.ClientSecret = googleAuthNSection["ClientSecret"];
                 });
+
+            services.AddScoped<IRDSRepo, EFRDSRepo>();
 
             
         }

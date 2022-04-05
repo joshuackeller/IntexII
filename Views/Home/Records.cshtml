@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model CrashesViewModel 
+
+<div>Records</div>
+
+<div>
+    @foreach(var x in Model.crashes)
+            {
+    <div>@x.city</div>
+            }
+</div>
+
+
+
+<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Books" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>
+
