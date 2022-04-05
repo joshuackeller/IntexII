@@ -59,8 +59,8 @@ namespace IntexII.Controllers
 
         public IActionResult SingleRecord(int id)
         {
-            var crash = repo.crashes
-                .Where(x => x.crash_id == id);
+            var crash = repo.crashes.FirstOrDefault(x => x.crash_id == id);
+
 
             return View(crash);
         }
