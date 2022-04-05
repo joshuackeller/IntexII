@@ -82,7 +82,7 @@ namespace IntexII
 
             services.AddDbContext<RDSContext>(options =>
             {
-                options.UseMySql(Configuration["ConnectionStrings:RDSdatabase"];
+                options.UseMySql(Configuration["ConnectionStrings:RDSdatabase"]);
 
             });
 
