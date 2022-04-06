@@ -14,6 +14,7 @@
     <None Remove="Pomelo.EntityFrameworkCore.MySql" />
     <None Remove="Controllers\Infrastructure\" />
     <None Remove="Models\ViewModels\" />
+    <None Remove="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.22" />
@@ -29,6 +30,7 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
+    <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="3.6.0" />
   </ItemGroup>
 
   <ItemGroup>

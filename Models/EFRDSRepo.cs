@@ -14,6 +14,8 @@ namespace IntexII.Models
 
         public IQueryable<Crash> crashes => context.crashes;
 
+
+
         public void CreateCrash(Crash c)
         {
             context.Add(c);

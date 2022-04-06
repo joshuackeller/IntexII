@@ -14,14 +14,16 @@ namespace IntexII.Controllers
 
     public class AdminController : Controller
     {
-        public IRDSRepo repo;
+        public IRDSRepo repo { get; set; }
+
+
         public AdminController (IRDSRepo temp)
         {
             repo = temp;
         }
 
-        [Authorize(Roles="Admin")]
 
+        [Authorize(Roles="Admin")]
         public IActionResult Crashes(int pageNum = 1)
         {
 
@@ -46,15 +48,26 @@ namespace IntexII.Controllers
 
             return View(x);
         }
+
+
+
+
+
         [Authorize(Roles = "Admin")]
-        public IActionResult AddCrash()
+        [HttpGet]
+        public IActionResult DeleteCrash(int id)
         {
-            return View();
+            var Crash = repo.crashes.FirstOrDefault(x => x.crash_id == id);
+
+            return View(Crash);
         }
+
+        [HttpPost]
         [Authorize(Roles = "Admin")]
-        public IActionResult DeleteCrash()
+        public IActionResult DeleteCrash(Crash c)
         {
-            return View();
+            repo.DeleteCrash(c);
+            return RedirectToAction("Crashes");
         }
         [Authorize(Roles = "Admin")]
         public IActionResult EditCrash()
@@ -63,28 +76,62 @@ namespace IntexII.Controllers
         }
 
 
-        //edit button
-        [HttpGet]
-        public IActionResult Edit(int id)
+
+
+
+        [Authorize(Roles = "Admin")]
+        
+        public IActionResult AddCrash()
         {
-            var Crash = repo.crashes.Single(x => x.crash_id == id);
-            return View("Records", Crash);
+            
+            return View();
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPost]
-        public IActionResult Edit(Crash info)
+        public IActionResult AddCrash(Crash c)
         {
             if (ModelState.IsValid)
             {
-                repo.SaveCrash(info);
-
-
-                return RedirectToAction("Records");
+                repo.CreateCrash(c);
+                return RedirectToAction("Crashes");
             }
             else
             {
-                return View(info);
+                return View(c);
             }
+
         }
+
+
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult EditCrash(int id)
+        {
+            var crash = repo.crashes.FirstOrDefault(x => x.crash_id == id);
+            return View(crash);
+        }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult EditCrash(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.SaveCrash(c);
+                return RedirectToAction("Crashes");
+            }
+            else
+            {
+                return View(c);
+            }
+           
+        }
+
+
+
 
     }
 }

@@ -1,27 +1,22 @@
-﻿@page
-@model Crash
+﻿
+
 @{
+    ViewData["Title"] = "Edit Report";
 }
 
+@model Crash
 
-<div>page for editing crashes</div>
 
-<h1>Driving Records Database</h1>
-<form method="post" asp-controller="INSERTCONTROLLERNAME" asp-action="INSERTACTIONNAME">
-
+<form method="post">
     <div class="form-group">
-
-        <input asp-for="crash_id" class="form-control" type="hidden" value="@Model.crash_id" />
+        <input type="hidden" asp-for="crash_id" />
     </div>
 
     <div class="form-group">
         <label asp-for="crash_date">Crash date: </label>
-        <input asp-for="crash_date" class="form-control" />
+        <input type="text" asp-for="crash_date" />
     </div>
-    @*<div class="form-group">
-        <label asp-for="crash_time">Crash time: </label>
-        <input asp-for="crash_time" class="form-control" />
-    </div>*@
+
     <div class="form-group">
         <label asp-for="route">Route: </label>
         <input asp-for="route" class="form-control" />
@@ -50,7 +45,7 @@
         <label asp-for="county_name">County: </label>
         <input asp-for="county_name" class="form-control" />
     </div>
-    @*figure out if this needs to be a drop down or lets them enter what ever they would please*@
+
     <div class="form-group">
         <label asp-for="crash_severity_id">Crash Severity: </label>
         <input asp-for="crash_severity_id" class="form-control" />
@@ -200,7 +195,7 @@
 
 
     <div class="float-end">
-        <input class="btn btn-primary" type="submit" value="INSERTVALUE HERE" />
+        <button class="btn btn-primary" type="submit">Submit</button>
     </div>
     <div asp-validation-summary="All"></div>
 </form>

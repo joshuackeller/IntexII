@@ -2,11 +2,47 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-}
+    ViewData["Title"] = "Records";
 
+}
 @model Crash
 
+    <div class="py-10">
+        <h3>Info</h3>
+        <div>ID: @Model.crash_id</div>
+        <div>Route: @Model.route</div>
+        <div>Milepoint: @Model.milepoint</div>
+        <div>UTM Latitude: @Model.lat_utm_y</div>
+        <div>UTM Longitude: @Model.long_utm_x</div>
+        <div>Main Road: @Model.main_road_name</div>
+        <div>Crash Date: @Model.crash_date</div>
 
+        <div>City: @Model.city</div>
+        <div>County: @Model.county_name</div>
+        <div>Crash Severity: @Model.crash_severity_id (On a scale of 1-5, 5 being the worst)</div>
 
-
-<div>@Model.crash_id</div>
+        <div></div>
+        <h3 class="py-2">True/False Section</h3>
+        <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));" class="py-2">
+            <div>Work Zone Related: @Model.work_zone_related</div>
+            <div>Pedestrian Involved: @Model.pedestrian_involved</div>
+            <div>Bicyclist Involved: @Model.bicyclist_involved</div>
+            <div>Motorcycle Involved: @Model.motorcycle_involved</div>
+            <div>Improper Restraint: @Model.improper_restraint</div>
+            <div>Unrestrained: @Model.unrestrained</div>
+            <div>DUI: @Model.dui</div>
+            <div>Intersection Related: @Model.intersection_related</div>
+            <div>Wild Animal Related: @Model.wild_animal_related</div>
+            <div>Domestic Animal Related @Model.domestic_animal_related</div>
+            <div>Overturn Rollover: @Model.overturn_rollover</div>
+            <div>Commercial Vehicle Involved: @Model.commercial_motor_veh_involved</div>
+            <div>Teenage Driver Involved: @Model.teenage_driver_involved</div>
+            <div>Older Driver Involved: @Model.older_driver_involved</div>
+            <div>Night/Dark Condition @Model.night_dark_condition</div>
+            <div>Single Vehicle: @Model.single_vehicle</div>
+            <div>Distracted Driving: @Model.distracted_driving</div>
+            <div>Drowsy Driving: @Model.drowsy_driving</div>
+            <div>Roadway Departures: @Model.roadway_departure</div>
+            <div>Outside City Limits: @Model.outside_city_limits</div>
+        </div>
+    </div>
