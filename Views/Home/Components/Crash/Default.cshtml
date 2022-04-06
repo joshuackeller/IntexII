@@ -4,10 +4,10 @@
 
 
 
-    <a asp-controller="Home" asp-action="Records" >Home</a>
+    <a asp-controller="Home" asp-action="Records" asp-route-severity="">Home</a>
 
     @foreach (double c in Model)
     {
-        <a asp-controller="Home" asp-action="Records " asp-route-pageNum="1" asp-route-severity="@c">@c</a>
+        <a asp-controller="Home" asp-action="Records" asp-route-pageNum="1" asp-route-severity="@c">@c</a>
 
     }

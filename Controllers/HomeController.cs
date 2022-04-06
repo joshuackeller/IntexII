@@ -48,7 +48,7 @@ namespace IntexII.Controllers
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes = repo.crashes.Count(),
+                    TotalNumCrashes = (severity == 0 ? repo.crashes.Count() : repo.crashes.Where(x => x.crash_severity_id == severity).Count()),
                     CrashesPerPage = length,
                     CurrentPage = pageNum
                 }

@@ -141,20 +141,31 @@ namespace IntexII
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{pageNum?}");
+                     name: "filter",
+                     pattern: "Filter{severity}/{pageNum}",
+                     defaults: new { controller = "Home", action = "Records" });
+
                 endpoints.MapControllerRoute(
-                    name: "Records",
-                    pattern: "{controller=Home}/{action=Records}/{pageNum?}/{severity?}");
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=SingleAction}/{id?}");
-                
-                endpoints.MapControllerRoute(
-                    name: "admin",
-                    pattern: "{controller=Admin}/{action=Crashes}/{id?}");
-               
+                    name: "paging",
+                    pattern: "{pageNum}",
+                    defaults: new { controller = "Home", action = "Records", pageNum = 1 });
+
+
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{pageNum?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=SingleAction}/{id?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "admin",
+                //    pattern: "{controller=Admin}/{action=Crashes}/{id?}");
+
                 endpoints.MapRazorPages();
 
             });

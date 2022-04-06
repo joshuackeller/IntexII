@@ -38,20 +38,27 @@ namespace IntexII.Controllers.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = 1; i <= PageDynamic.TotalPages; i++)
+            for (int i = PageDynamic.CurrentPage - 3; i <= PageDynamic.CurrentPage + 3; i++)
             {
-                TagBuilder tb = new TagBuilder("a");
+                if (i <= 0)
+                {
+                    continue;
+                }
+                else
+                {
+                    TagBuilder tb = new TagBuilder("a");
 
-                tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
-                tb.Attributes["style"] = "margin-right: 10px; margin-left: 10px;";
+                    tb.Attributes["href"] = uh.Action(PageAction, new { pageNum = i });
+                    tb.Attributes["style"] = "margin-right: 10px; margin-left: 10px;";
 
 
-                tb.AddCssClass(i == PageDynamic.CurrentPage ? PageClassSelected : PageClassNormal);
+                    tb.AddCssClass(i == PageDynamic.CurrentPage ? PageClassSelected : PageClassNormal);
 
 
-                tb.InnerHtml.Append(i.ToString());
+                    tb.InnerHtml.Append(i.ToString());
 
-                final.InnerHtml.AppendHtml(tb);
+                    final.InnerHtml.AppendHtml(tb);
+                }
 
             }
 
