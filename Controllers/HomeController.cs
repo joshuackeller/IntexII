@@ -33,7 +33,7 @@ namespace IntexII.Controllers
         }
 
 
-        public IActionResult Records(int pageNum = 1)
+        public IActionResult Records( double severity = 0, int pageNum = 1)
         {
 
             var length = 300;
@@ -42,6 +42,7 @@ namespace IntexII.Controllers
             var x = new CrashesViewModel
             {
                 crashes = repo.crashes
+                    .Where(x => x.crash_severity_id == severity || severity == 0)
                     .Skip(length * (pageNum - 1))
                     .Take(length),
 

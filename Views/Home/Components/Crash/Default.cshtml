@@ -1,0 +1,13 @@
+﻿@{
+}
+@model IEnumerable<double>
+
+
+
+    <a asp-controller="Home" asp-action="Records" >Home</a>
+
+    @foreach (double c in Model)
+    {
+        <a asp-controller="Home" asp-action="Records " asp-route-pageNum="1" asp-route-severity="@c">@c</a>
+
+    }

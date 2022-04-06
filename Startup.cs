@@ -79,6 +79,7 @@ namespace IntexII
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            
 
             services.AddDbContext<RDSContext>(options =>
             {
@@ -107,8 +108,9 @@ namespace IntexII
                 });
 
             services.AddScoped<IRDSRepo, EFRDSRepo>();
+            //services.AddScoped<ITeamsRepository, EFTeamsRepository>();
 
-            
+
         }
 
 
@@ -143,6 +145,9 @@ namespace IntexII
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{pageNum?}");
                 endpoints.MapControllerRoute(
+                    name: "Records",
+                    pattern: "{controller=Home}/{action=Records}/{pageNum?}/{severity?}");
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=SingleAction}/{id?}");
                 
@@ -151,6 +156,7 @@ namespace IntexII
                     pattern: "{controller=Admin}/{action=Crashes}/{id?}");
                
                 endpoints.MapRazorPages();
+
             });
         }
     }
