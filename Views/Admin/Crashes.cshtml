@@ -35,14 +35,14 @@
 
 
                 <td>
-                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Admin" asp-action="Edit" asp-route-id="@a.crash_id">Edit</a>
+                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Admin" asp-action="EditCrash" asp-route-id="@a.crash_id">Edit</a>
 
                 </td>
                 <td>
-                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="Delete" asp-route-id="@a.crash_id">Delete</a>
+                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Admin" asp-action="DeleteCrash" asp-route-id="@a.crash_id">Delete</a>
                 </td>
 
-                <td type="hidden" asp-for="@a.crash_id" />
+                @*<td type="hidden" asp-for="@a.crash_id" />*@
 
 
             </tr>

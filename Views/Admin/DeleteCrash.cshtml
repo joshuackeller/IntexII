@@ -3,7 +3,20 @@
 *@
 @{
 }
+@model Crash
 
 <div>page for deleting crashes</div>
+<div>Are you sure you want to delete this record?</div>
+<br />
+
+<form method="post" asp-action="DeleteCrash">
+    <div class="d-flex justify-content-center">
+        <button type="submit">Delete</button>
+        <div class="col-1">     </div>
+        <a asp-controller="Admin" asp-action="Crashes" class="btn btn-primary">Cancel</a>
+    </div>
+    <input type="hidden" asp-for="crash_id" />
+
+</form>
 
 

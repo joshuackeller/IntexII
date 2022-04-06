@@ -52,9 +52,20 @@ namespace IntexII.Controllers
             return View();
         }
         [Authorize(Roles = "Admin")]
-        public IActionResult DeleteCrash()
+        [HttpGet]
+        public IActionResult DeleteCrash(int id)
         {
-            return View();
+            var Crash = repo.crashes.FirstOrDefault(x => x.crash_id == id);
+
+            return View(Crash);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin")]
+        public IActionResult DeleteCrash(Crash c)
+        {
+            repo.DeleteCrash(c);
+            return RedirectToAction("Crashes");
         }
         [Authorize(Roles = "Admin")]
         public IActionResult EditCrash()
@@ -65,13 +76,14 @@ namespace IntexII.Controllers
 
         //edit button
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult EditCrash(int id)
         {
-            var Crash = repo.crashes.Single(x => x.crash_id == id);
-            return View("Records", Crash);
+            var Crash = repo.crashes.FirstOrDefault(x => x.crash_id == id);
+            return View("EditCrash", Crash);
         }
+
         [HttpPost]
-        public IActionResult Edit(Crash info)
+        public IActionResult EditCrash(Crash info)
         {
             if (ModelState.IsValid)
             {

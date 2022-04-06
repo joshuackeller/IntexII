@@ -3,26 +3,28 @@
 @{
 }
 
+@*<h1>@ViewData["EditCrash"]</h1>*@
 
 <div>page for editing crashes</div>
 
 <h1>Driving Records Database</h1>
-<form method="post" asp-controller="INSERTCONTROLLERNAME" asp-action="INSERTACTIONNAME">
+<form method="post" asp-controller="Admin" asp-action="EditCrash">
 
-    <div class="form-group">
-
+    @*<div class="form-group">
         <input asp-for="crash_id" class="form-control" type="hidden" value="@Model.crash_id" />
-    </div>
+    </div>*@
 
-    <div class="form-group">
+    <div>@Model.milepoint</div>
+
+    @*<div class="form-group">
         <label asp-for="crash_date">Crash date: </label>
         <input asp-for="crash_date" class="form-control" />
-    </div>
+    </div>*@
     @*<div class="form-group">
         <label asp-for="crash_time">Crash time: </label>
         <input asp-for="crash_time" class="form-control" />
     </div>*@
-    <div class="form-group">
+    <!--<div class="form-group">
         <label asp-for="route">Route: </label>
         <input asp-for="route" class="form-control" />
     </div>
@@ -49,9 +51,9 @@
     <div class="form-group">
         <label asp-for="county_name">County: </label>
         <input asp-for="county_name" class="form-control" />
-    </div>
+    </div>-->
     @*figure out if this needs to be a drop down or lets them enter what ever they would please*@
-    <div class="form-group">
+    <!--<div class="form-group">
         <label asp-for="crash_severity_id">Crash Severity: </label>
         <input asp-for="crash_severity_id" class="form-control" />
     </div>
@@ -196,7 +198,7 @@
             <option value="true">True</option>
             <option value="false">False</option>
         </select>
-    </div>
+    </div>-->
 
 
     <div class="float-end">

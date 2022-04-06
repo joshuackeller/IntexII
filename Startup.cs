@@ -145,10 +145,11 @@ namespace IntexII
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=SingleAction}/{id?}");
-                endpoints.MapRazorPages();
+                
                 endpoints.MapControllerRoute(
                     name: "admin",
                     pattern: "{controller=Admin}/{action=Crashes}/{id?}");
+               
                 endpoints.MapRazorPages();
             });
         }
