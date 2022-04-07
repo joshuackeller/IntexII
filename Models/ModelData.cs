@@ -13,10 +13,7 @@ namespace IntexII.Models
         public float county_name_utah { get; set; }
         public float county_name_saltlake { get; set; }
         public float county_name_other { get; set; }
-        public float city_other { get; set; }
-        public float main_road_name_other { get; set; }
-        public float milepoint_other { get; set; }
-        public float route_other { get; set; }
+        public float city_OUTSIDE_CITY_LIMITS { get; set; }
         public float roadway_departure { get; set; }
         public float single_vehicle { get; set; }
         public float night_dark_condition { get; set; }
@@ -29,11 +26,11 @@ namespace IntexII.Models
         {
             float[] data = new float[]
             {
-                county_name_utah, county_name_saltlake, county_name_other, city_other, main_road_name_other,
-                milepoint_other, route_other, roadway_departure, single_vehicle, night_dark_condition, older_driver_involved,
+                county_name_utah, county_name_saltlake, county_name_other, city_OUTSIDE_CITY_LIMITS, 
+               roadway_departure, single_vehicle, night_dark_condition, older_driver_involved,
                 teenage_driver_involved, intersection_related
             };
-            int[] dimensions = new int[] { 1, 13 };
+            int[] dimensions = new int[] { 1, 10 };
             return new DenseTensor<float>(data, dimensions);
         }
     }
