@@ -101,6 +101,29 @@ namespace IntexII.Controllers
            
         }
 
+        [Authorize(Roles = "Admin")]
+        [HttpGet]
+        public IActionResult AddCrash()
+        {
+            return View();
+        }
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public IActionResult AddCrash(Crash c)
+        {
+            if (ModelState.IsValid)
+            {
+                repo.CreateCrash(c);
+                return RedirectToAction("Crashes");
+            }
+            else
+            {
+                return View(c);
+            }
+            
+            
+        }
+
 
 
 
