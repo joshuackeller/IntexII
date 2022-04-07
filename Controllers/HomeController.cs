@@ -97,10 +97,14 @@ namespace IntexII.Controllers
             {
                 NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
             });
-            Tensor<float> score = result.First().AsTensor<float>();
+            Tensor<string> score = result.First().AsTensor<string>();
+
+            //ViewBag["prediction"] = score.First()
+        
+
             var prediction = new Prediction { PredictedValue = score.First() };
             result.Dispose();
-            return View("Score", prediction);
+            return View( prediction);
         }
 
     }

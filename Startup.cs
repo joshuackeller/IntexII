@@ -117,7 +117,7 @@ namespace IntexII
             //services.AddScoped<ITeamsRepository, EFTeamsRepository>();
 
             services.AddSingleton<InferenceSession>(
-                new InferenceSession("intex.onnx"));
+                new InferenceSession("wwwroot/intex.onnx"));
 
         }
 

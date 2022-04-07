@@ -13,5 +13,7 @@ namespace IntexII.Models
 
         }
         public DbSet<Crash> crashes { get; set; }
+
+        
     }
 }
