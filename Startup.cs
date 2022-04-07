@@ -79,6 +79,7 @@ namespace IntexII
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            
 
             services.AddDbContext<RDSContext>(options =>
             {
@@ -110,8 +111,9 @@ namespace IntexII
                 });
 
             services.AddScoped<IRDSRepo, EFRDSRepo>();
+            //services.AddScoped<ITeamsRepository, EFTeamsRepository>();
 
-            
+
         }
 
 
@@ -142,17 +144,38 @@ namespace IntexII
 
             app.UseEndpoints(endpoints =>
             {
+
+
+                endpoints.MapControllerRoute(
+                     name: "filter",
+                     pattern: "{severity}/{pageNum}",
+                     defaults: new { controller = "Home", action = "Records" });
+
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{pageNum?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=SingleAction}/{id?}");
+                    name: "paging",
+                    pattern: "{pageNum}",
+                    defaults: new { controller = "Home", action = "Records", pageNum = 1 });
+
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=Index}/{pageNum?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "default",
+                //    pattern: "{controller=Home}/{action=SingleAction}/{id?}");
+
+                //endpoints.MapControllerRoute(
+                //    name: "admin",
+                //    pattern: "{controller=Admin}/{action=Crashes}/{id?}");
+
                 endpoints.MapRazorPages();
-                endpoints.MapControllerRoute(
-                    name: "admin",
-                    pattern: "{controller=Admin}/{action=Crashes}/{id?}");
-                endpoints.MapRazorPages();
+
             });
         }
     }

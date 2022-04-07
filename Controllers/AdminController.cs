@@ -62,8 +62,9 @@ namespace IntexII.Controllers
             return View(Crash);
         }
 
-        [HttpPost]
+       
         [Authorize(Roles = "Admin")]
+         [HttpPost]
         public IActionResult DeleteCrash(Crash c)
         {
             repo.DeleteCrash(c);
@@ -74,36 +75,6 @@ namespace IntexII.Controllers
         {
             return View();
         }
-
-
-
-
-
-        [Authorize(Roles = "Admin")]
-        
-        public IActionResult AddCrash()
-        {
-            
-            return View();
-        }
-
-        [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public IActionResult AddCrash(Crash c)
-        {
-            if (ModelState.IsValid)
-            {
-                repo.CreateCrash(c);
-                return RedirectToAction("Crashes");
-            }
-            else
-            {
-                return View(c);
-            }
-
-        }
-
-
 
 
         [Authorize(Roles = "Admin")]

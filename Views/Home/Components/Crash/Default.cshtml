@@ -1,0 +1,17 @@
+﻿@{
+}
+@model IEnumerable<double>
+
+
+
+<div>
+
+    <div class="py-2"> <a  asp-controller="Home" asp-action="Records" asp-route-severity="" class="btn btn-outline-secondary w-100  @(ViewBag.SelectedSeverity == "" ? "btn-primary": "btn-outline-secondary")">Home</a></div>
+
+    @foreach (double c in Model)
+    {
+<div class="py-2"><a asp-controller="Home" asp-action="Records" asp-route-pageNum="1" class="btn w-100 @(ViewBag.SelectedSeverity == c.ToString() ? "btn-primary": "btn-outline-secondary")" asp-route-severity="@c">Severity @c</a></div>
+
+    }
+</div>
+

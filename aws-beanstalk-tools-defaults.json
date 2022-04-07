@@ -1,0 +1,22 @@
+
+{
+    "region" : "us-east-2",
+    "configuration" : "Release",
+    "framework"     : "netcoreapp3.1",
+    "self-contained" : false,
+    "application"    : "IntexII",
+    "environment"    : "WINTEX2",
+    "enable-xray"    : false,
+    "enhanced-health-type" : "basic",
+    "additional-options"   : "\"aws:autoscaling:launchconfiguration,SecurityGroups\"=\"sg-0187d92e11622ef2b\";\"aws:ec2:vpc,Subnets\"=\"subnet-0c6f3f461ccbb6753\";\"aws:ec2:vpc,ELBSubnets\"=\"subnet-0c6f3f461ccbb6753,subnet-0064b869986bb16fe,subnet-0d620638a51921fa8\"",
+    "proxy-server"         : "nginx",
+    "solution-stack"       : "64bit Amazon Linux 2 v2.3.0 running .NET Core",
+    "environment-type"     : "LoadBalanced",
+    "cname"                : "wintex2",
+    "instance-type"        : "t3a.medium",
+    "key-pair"             : "",
+    "instance-profile"     : "aws-elasticbeanstalk-ec2-role",
+    "service-role"         : "aws-elasticbeanstalk-service-role",
+    "loadbalancer-type"    : "application",
+    "health-check-url"     : "/"
+}

@@ -13,7 +13,8 @@
 <body>
     <!-- Cookie banner -->
     <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-    <script>window.cookieconsent.initialise({
+    <script>
+    window.cookieconsent.initialise({
             "palette": {
                 "popup": {
                     "background": "#7e7f9a",
@@ -54,6 +55,10 @@
             </div>
         </nav>
     </header>
+
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -68,7 +73,7 @@
             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Crashes">Admin</a>
         </div>
     </footer>
-   
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
