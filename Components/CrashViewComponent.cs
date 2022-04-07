@@ -17,8 +17,7 @@ namespace IntexII.Components
 
         public IViewComponentResult Invoke()
         {
-            //ViewBag.SelectedTeam = RouteData?.Values["crash_severity_id"];
-
+            ViewBag.SelectedSeverity = RouteData?.Values["severity"];
 
             var Crash = repo.crashes
                 .Select(x => x.crash_severity_id)

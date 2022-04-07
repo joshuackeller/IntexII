@@ -4,49 +4,61 @@
 @{
 }
 
-@model CrashesViewModel 
-
-<div>Records</div>
-
-<vc:crash></vc:crash>
-<table class="table table-bordered table-striped">
-    <thead>
-        <tr>
-            <th>Crash ID</th>
-            <th>Main Road Name</th>
-            <th>City</th>
-            <th>County Name</th>
-            <th>Crash Severity</th>
+@model CrashesViewModel
 
 
-        </tr>
-    </thead>
+<body>
+    <div class="row m-1 p-1">
 
-    <tbody>
-        @foreach (var a in Model.crashes)
-        {
-            <tr>
-                <td>@a.crash_id</td>
-                <td>@a.main_road_name</td>
-                <td>@a.city</td>
-                <td>@a.county_name</td>
-                <td>@a.crash_severity_id</td>
+        <div id="types" class="col-3 p-1" >
+            <vc:crash></vc:crash>
+        </div>
 
 
-
-                <td>
-                    <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
-
-                </td>
-                
-
-                <td type="hidden" asp-for="@a.crash_id" />
-
-              
-            </tr>
-        }
-    </tbody>
-</table>
+        <div class="col-9">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>Crash ID</th>
+                        <th>Main Road Name</th>
+                        <th>City</th>
+                        <th>County Name</th>
+                        <th>Crash Severity</th>
 
 
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var a in Model.crashes)
+                    {
+                        <tr>
+                            <td>@a.crash_id</td>
+                            <td>@a.main_road_name</td>
+                            <td>@a.city</td>
+                            <td>@a.county_name</td>
+                            <td>@a.crash_severity_id</td>
+
+
+
+                            <td>
+                                <a class="nav-link text-dark btn btn-warning btn-sm" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
+
+                            </td>
+
+
+                            <td type="hidden" asp-for="@a.crash_id" />
+
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+ 
+</body>
 <div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>

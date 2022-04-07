@@ -38,7 +38,7 @@ namespace IntexII.Controllers.Infrastructure
 
             TagBuilder final = new TagBuilder("div");
 
-            for (int i = PageDynamic.CurrentPage - 3; i <= PageDynamic.CurrentPage + 3; i++)
+            for (int i =(( PageDynamic.CurrentPage >= 3) ? PageDynamic.CurrentPage - 3: 1);i<= ((PageDynamic.TotalPages >= PageDynamic.CurrentPage +3) ? PageDynamic.CurrentPage +3 :PageDynamic.TotalPages); i++)
             {
                 if (i <= 0)
                 {

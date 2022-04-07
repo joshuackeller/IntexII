@@ -142,16 +142,21 @@ namespace IntexII
             app.UseEndpoints(endpoints =>
             {
 
+
                 endpoints.MapControllerRoute(
                      name: "filter",
-                     pattern: "Filter{severity}/{pageNum}",
+                     pattern: "{severity}/{pageNum}",
                      defaults: new { controller = "Home", action = "Records" });
+
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
                 endpoints.MapControllerRoute(
                     name: "paging",
                     pattern: "{pageNum}",
                     defaults: new { controller = "Home", action = "Records", pageNum = 1 });
-
 
 
                 //endpoints.MapControllerRoute(
