@@ -6,20 +6,16 @@
 }
 
 @model CrashesViewModel
-<br />
-<br />
-<br />
-<br />
-<br />
+
+
+<h1>Records</h1>
 
  
         <a class="btn btn-primary" asp-controller="Admin" asp-action="AddCrash">Add Record</a>
     
     <form method="post">
 
-
-
-        <div class="row m-1 p-1">
+        <div class="row m-1">
 
 
             <div id="types" class="col-9">
@@ -70,32 +66,32 @@
                 {
                     for (var i = 1; i <= Model.PageInfo.TotalPages; i++)
                     {
-                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@i" />
+                        <input class="btn btn-sm  @(Model.PageInfo.CurrentPage == i ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@i" />
                     }
 
                 }
                 else if (Model.PageInfo.CurrentPage <= 2)
                 {
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="1" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="2" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="3" /><span>...</span>
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == 1 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="1" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == 2 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="2" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == 3 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="3" /><span>...</span>
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.TotalPages ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
                 }
                 else if (Model.PageInfo.TotalPages - Model.PageInfo.CurrentPage <= 2)
                 {
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 3)" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 2)" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 1 )" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == 1 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == (Model.PageInfo.TotalPages - 3) ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 3)" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == (Model.PageInfo.TotalPages - 2) ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 2)" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == (Model.PageInfo.TotalPages - 1) ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 1 )" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.TotalPages  ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
                 }
                 else
                 {
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page2" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.CurrentPage" />
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page4" /><span>...</span>
-                    <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == 1 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.Page2 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page2" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.CurrentPage ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.CurrentPage" />
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.Page4 ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page4" /><span>...</span>
+                    <input class="btn btn-sm @(Model.PageInfo.CurrentPage == Model.PageInfo.TotalPages ? "btn-primary" : "btn-secondary")" type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
                 }
             </div>
 
@@ -121,7 +117,8 @@
                     }
                 </select>
 
-                <input type="submit" asp-for="PageInfo.CurrentPage" value="1" />
+                <input type="hidden" asp-for="PageInfo.CurrentPage" value="1" />
+                <button type="submit" class="btn btn-primary py-2 my-2">Change Filters</button>
             </div>
 
             @*<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Crashes" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>*@

@@ -64,7 +64,7 @@ namespace IntexII.Controllers
 
             return View(x);
         }
-        
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public IActionResult Crashes(CrashesViewModel cvm)
         {

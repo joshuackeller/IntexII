@@ -2,6 +2,39 @@
     ViewData["Title"] = "Home";
 }
 
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
+    window.cookieconsent.initialise({
+        "palette": {
+            "popup": {
+                "background": "#7e7f9a",
+                "text": "#ffffff"
+            },
+            "button": {
+                "background": "#353531",
+                "text": "#ffffff"
+            }
+        },
+        "content": {
+            "message": "This website uses cookies to ensure you get the best experiences on our website. By proceeding, you are consenting to our use of cookies and agreeing to our Privacy Policy",
+            "dismiss": "Got it!",
+            "href": "www.intex.dogetomuchmoon.com/privacypolicy"
+        }
+    });
+</script>
+    </script>
+<script>
+    // Cookie banner
+    if (localStorage.getItem('cookieSeen') != 'shown') {
+        $(".cookie-banner").delay(2000).fadeIn();
+        localStorage.setItem('cookieSeen', 'shown')
+    }
+
+    $('.close').click(function (e) {
+        $('.cookie-banner').fadeOut();
+    });
+</script>
+
 <!-- ======= Hero Section ======= -->
 <section id="hero"
          class="d-flex flex-column justify-content-center align-items-center">
@@ -73,14 +106,14 @@
                 <div class="col-lg-6 pt-4 pt-lg-0">
                     <h3>About Us</h3>
                     <p>
-                        Welcome to the Utah Driving Collisions Database. This website was created to help raise awareness of what is happening on Utah roads. 
+                        Welcome to the Utah Driving Collisions Database. This website was created to help raise awareness of what is happening on Utah roads.
                     </p>
                     <ul>
                         <li>
                             <i class="bx bx-check-double"></i> Incorporate this data in your research around previous crash data.
                         </li>
                         <li>
-                            <i class="bx bx-check-double"></i> Utilize our prediction calculator to predict crash severity of a future crash. 
+                            <i class="bx bx-check-double"></i> Utilize our prediction calculator to predict crash severity of a future crash.
                         </li>
                     </ul>
                     <div class="row icon-boxes">
@@ -95,7 +128,7 @@
                             <i class="bx bx-cube-alt"></i>
                             <h4>Predictive Analytics</h4>
                             <p>
-                                Our model will help you predict the severity of a car crash on Utah roads. Take this as a reminder to always stay cautious and aware while driving. 
+                                Our model will help you predict the severity of a car crash on Utah roads. Take this as a reminder to always stay cautious and aware while driving.
                             </p>
                         </div>
                     </div>
@@ -241,4 +274,4 @@
     </a>
 
 
-   </main>
+</main>

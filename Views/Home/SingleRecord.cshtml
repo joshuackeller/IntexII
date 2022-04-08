@@ -11,54 +11,77 @@
 }
 @model Crash
 
+<h2>Crash #@Model.crash_id</h2>
 
 
-<div class="py-10">
-    <h3>Info</h3>
-    <div>ID: @Model.crash_id</div>
-    <div>Route: @Model.route</div>
-    <div>Milepoint: @Model.milepoint</div>
-    <div>UTM Latitude: @Model.lat_utm_y</div>
-    <div>UTM Longitude: @Model.long_utm_x</div>
-    <div>Main Road: @Model.main_road_name</div>
-    <div>Crash Date: @Model.crash_datetime</div>
+<div class="row m-1">
 
-    <div>City: @Model.city</div>
-    <div>County: @Model.county_name</div>
-    <div>Crash Severity: @Model.crash_severity_id (On a scale of 1-5, 5 being the worst)</div>
 
-    <div></div>
 
-    <iframe width="300"
-            height="300"
-            style="border:0"
-            loading="lazy"
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="@srcString">
-    </iframe>
 
-    <h3 class="py-2">True/False Section</h3>
-    <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));" class="py-2">
-        <div>Work Zone Related: @Model.work_zone_related</div>
-        <div>Pedestrian Involved: @Model.pedestrian_involved</div>
-        <div>Bicyclist Involved: @Model.bicyclist_involved</div>
-        <div>Motorcycle Involved: @Model.motorcycle_involved</div>
-        <div>Improper Restraint: @Model.improper_restraint</div>
-        <div>Unrestrained: @Model.unrestrained</div>
-        <div>DUI: @Model.dui</div>
-        <div>Intersection Related: @Model.intersection_related</div>
-        <div>Wild Animal Related: @Model.wild_animal_related</div>
-        <div>Domestic Animal Related @Model.domestic_animal_related</div>
-        <div>Overturn Rollover: @Model.overturn_rollover</div>
-        <div>Commercial Vehicle Involved: @Model.commercial_motor_veh_involved</div>
-        <div>Teenage Driver Involved: @Model.teenage_driver_involved</div>
-        <div>Older Driver Involved: @Model.older_driver_involved</div>
-        <div>Night/Dark Condition @Model.night_dark_condition</div>
-        <div>Single Vehicle: @Model.single_vehicle</div>
-        <div>Distracted Driving: @Model.distracted_driving</div>
-        <div>Drowsy Driving: @Model.drowsy_driving</div>
-        <div>Roadway Departures: @Model.roadway_departure</div>
-        <div>Outside City Limits: @Model.outside_city_limits</div>
+    <div id="types" class="col-6">
+
+        <div class="py-10">
+            <h3>Info</h3>
+            <div>ID: @Model.crash_id</div>
+            <div>Route: @Model.route</div>
+            <div>Milepoint: @Model.milepoint</div>
+            <div>Main Road: @Model.main_road_name</div>
+            <div>Crash Date: @Model.crash_datetime</div>
+
+            <div>City: @Model.city</div>
+            <div>County: @Model.county_name</div>
+            <div>Crash Severity: @Model.crash_severity_id (On a scale of 1-5, 5 being the worst)</div>
+
+         </div>
     </div>
+
+        <div class="col-6">
+
+            <iframe width="300"
+                    height="300"
+                    style="border:0"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="@srcString">
+            </iframe>
+        </div>
+
+</div>
+
+<div class="row m-1">
+
+
+
+
+    
+
+
+
+
+        <h3 class="py-2 col-12">True/False Section</h3>
+        
+            <div class="col-6">Work Zone Related: @Model.work_zone_related</div>
+            <div class="col-6">Pedestrian Involved: @Model.pedestrian_involved</div>
+            <div class="col-6">Bicyclist Involved: @Model.bicyclist_involved</div>
+            <div class="col-6">Motorcycle Involved: @Model.motorcycle_involved</div>
+            <div class="col-6">Improper Restraint: @Model.improper_restraint</div>
+            <div class="col-6">Unrestrained: @Model.unrestrained</div>
+            <div class="col-6">DUI: @Model.dui</div>
+            <div class="col-6">Intersection Related: @Model.intersection_related</div>
+            <div class="col-6">Wild Animal Related: @Model.wild_animal_related</div>
+            <div class="col-6">Domestic Animal Related @Model.domestic_animal_related</div>
+            <div class="col-6">Overturn Rollover: @Model.overturn_rollover</div>
+            <div class="col-6">Commercial Vehicle Involved: @Model.commercial_motor_veh_involved</div>
+            <div class="col-6">Teenage Driver Involved: @Model.teenage_driver_involved</div>
+            <div class="col-6">Older Driver Involved: @Model.older_driver_involved</div>
+            <div class="col-6">Night/Dark Condition @Model.night_dark_condition</div>
+            <div class="col-6">Single Vehicle: @Model.single_vehicle</div>
+            <div class="col-6">Distracted Driving: @Model.distracted_driving</div>
+            <div class="col-6">Drowsy Driving: @Model.drowsy_driving</div>
+            <div class="col-6">Roadway Departures: @Model.roadway_departure</div>
+            <div class="col-6">Outside City Limits: @Model.outside_city_limits</div>
+        
+
 </div>

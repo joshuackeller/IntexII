@@ -42,9 +42,10 @@ namespace IntexII.Controllers
             return View();
         }
 
-        
-        public IActionResult Records()
+       
+        public IActionResult Records(int pageNum = 1)
         {
+
             var cities = repo.crashes
                                .Select(x => new City() { city = x.city });
 
@@ -75,17 +76,18 @@ namespace IntexII.Controllers
                     TotalNumCrashes = repo.crashes.Count(),
                     CrashesPerPage = length,
                     CurrentPage = 1,
-                    
+
                 }
-                
+
             };
 
             return View(x);
         }
+        
         [HttpPost]
         public IActionResult Records(CrashesViewModel cvm)
         {
-            
+
             var cities = repo.crashes
                                .Select(x => new City() { city = x.city });
 
@@ -128,7 +130,7 @@ namespace IntexII.Controllers
                     CrashesPerPage = length,
                     CurrentPage = cvm.PageInfo.CurrentPage,
                     Page2 = cvm.PageInfo.CurrentPage - 1,
-                   Page4 = cvm.PageInfo.CurrentPage + 1
+                    Page4 = cvm.PageInfo.CurrentPage + 1
                 },
 
                 Filter = cvm.Filter
