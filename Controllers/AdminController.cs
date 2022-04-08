@@ -27,22 +27,94 @@ namespace IntexII.Controllers
         public IActionResult Crashes(int pageNum = 1)
         {
 
+            var cities = repo.crashes
+                               .Select(x => new City() { city = x.city });
 
-            var length = 300;
+            ViewBag.city = cities.Select(x => x.city)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+
+            var severity = repo.crashes
+                                .Select(x => new Severity() { severity = x.crash_severity_id });
+
+            ViewBag.severity = severity.Select(x => x.severity)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+            var length = 30;
 
 
             var x = new CrashesViewModel
             {
                 crashes = repo.crashes
-                    .Skip(length * (pageNum - 1))
                     .Take(length),
 
                 PageInfo = new PageInfo
                 {
                     TotalNumCrashes = repo.crashes.Count(),
                     CrashesPerPage = length,
-                    CurrentPage = pageNum
+                    CurrentPage = 1,
+
                 }
+
+            };
+
+            return View(x);
+        }
+        
+        [HttpPost]
+        public IActionResult Crashes(CrashesViewModel cvm)
+        {
+
+            var cities = repo.crashes
+                               .Select(x => new City() { city = x.city });
+
+            ViewBag.city = cities.Select(x => x.city)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+
+            var severity = repo.crashes
+                                .Select(x => new Severity() { severity = x.crash_severity_id });
+
+            ViewBag.severity = severity.Select(x => x.severity)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+            var length = 30;
+
+
+            var x = new CrashesViewModel
+            {
+                crashes = repo.crashes
+                    .Where(x => x.crash_severity_id == cvm.Filter.severity || cvm.Filter.severity == 0)
+                    .Where(x => x.city == cvm.Filter.city || cvm.Filter.city == null)
+                    .Skip(length * (cvm.PageInfo.CurrentPage - 1))
+                    .Take(length),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumCrashes = ((cvm.Filter.severity == 0 && cvm.Filter.city == null) ?
+                    repo.crashes.Count()
+                    : (cvm.Filter.severity == 0) ?
+                    repo.crashes.Where(x => x.city == cvm.Filter.city).Count()
+                    : (cvm.Filter.city == null) ?
+                    repo.crashes.Where(x => x.crash_severity_id == cvm.Filter.severity).Count()
+                    : repo.crashes.Where(x => x.city == cvm.Filter.city).Where(x => x.crash_severity_id == cvm.Filter.severity).Count()
+                    ),
+
+                    CrashesPerPage = length,
+                    CurrentPage = cvm.PageInfo.CurrentPage,
+                    Page2 = cvm.PageInfo.CurrentPage - 1,
+                    Page4 = cvm.PageInfo.CurrentPage + 1
+                },
+
+                Filter = cvm.Filter
 
             };
 

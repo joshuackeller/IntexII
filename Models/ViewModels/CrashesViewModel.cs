@@ -8,5 +8,7 @@ namespace IntexII.Models.ViewModels
         public IQueryable<Crash> crashes { get; set; }
 
         public PageInfo PageInfo { get; set; }
+
+        public FilterModel Filter { get; set; }
     }
 }

@@ -7,59 +7,119 @@
 
 @model CrashesViewModel
 
-<h2>Crash Records</h2>
-
-<body>
-    <div class="row m-1 p-1">
-
-        <div id="types" class="col-3 p-1" >
-            <vc:crash></vc:crash>
-        </div>
+    <body>
+        <form method="post">
+            <h2>Crash Records</h2>
 
 
-        <div class="col-9">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Crash ID</th>
-                        <th>Main Road Name</th>
-                        <th>City</th>
-                        <th>County Name</th>
-                        <th>Crash Severity</th>
-
-
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var a in Model.crashes)
-                    {
-                        <tr>
-                            <td>@a.crash_id</td>
-                            <td>@a.main_road_name</td>
-                            <td>@a.city</td>
-                            <td>@a.county_name</td>
-                            <td>@a.crash_severity_id</td>
-
-                <td>
-                    <a class="nav-link btn btn-primary btn-sm text-white" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
+            
 
 
 
-                            </td>
+
+            <div class="row m-1 p-1">
+
+                <div id="types" class="col-3 p-1">
+                    <label value="0">Severity</label><br />
+                    <select asp-for="Filter.severity">
+                        <option>Select All</option>
+                        @foreach (var a in ViewBag.severity)
+                        {
+                            <option value="@a">@a</option>
+                        }
+
+                    </select><br />
+                    <label>City</label><br />
+                    <select asp-for="Filter.city">
+
+                        <option value="@null">Select All</option>
+                        @foreach (var b in ViewBag.city)
+                        {
+                            <option value="@b">@b</option>
+                        }
+                    </select>
+
+                    <input type="submit" asp-for="PageInfo.CurrentPage" value="1"/>
+                </div>
+
+
+                <div class="col-9">
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Crash ID</th>
+                                <th>Main Road Name</th>
+                                <th>City</th>
+                                <th>County Name</th>
+                                <th>Crash Severity</th>
+
 
                             </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var a in Model.crashes)
+                            {
+                                <tr>
+                                    <td>@a.crash_id</td>
+                                    <td>@a.main_road_name</td>
+                                    <td>@a.city</td>
+                                    <td>@a.county_name</td>
+                                    <td>@a.crash_severity_id</td>
+
+                                    <td>
+                                        <a class="nav-link btn btn-primary btn-sm text-white" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
 
 
-                     
+
+                                    </td>
+
+                                </tr>
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    @*<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>*@
+                    @if (Model.PageInfo.TotalPages < 5)
+                    {
+                        for (var i = 1; i <= Model.PageInfo.TotalPages; i++)
+                        {
+                            <input type="submit" asp-for="PageInfo.CurrentPage" value="@i" />
+                        }
+
                     }
-                </tbody>
-            </table>
+                    else if (Model.PageInfo.CurrentPage <= 2)
+                    {
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="1" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="2" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="3" /><span>...</span>
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    }
+                    else if (Model.PageInfo.TotalPages - Model.PageInfo.CurrentPage <= 2)
+                    {
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 3)" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 2)" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@(Model.PageInfo.TotalPages - 1 )" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    }
+                    else
+                    {
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="1" /><span>...</span>
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page2" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.CurrentPage" />
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.Page4" /><span>...</span>
+                        <input type="submit" asp-for="PageInfo.CurrentPage" value="@Model.PageInfo.TotalPages" />
+                    }
 
-        </div>
-    </div>
+                </div>
+            </div>
 
 
- 
-</body>
-<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>
+
+
+        </form>
+    </body>

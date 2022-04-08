@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IntexII.Models;
 using IntexII.Models.ViewModels;
-using Microsoft.ML.OnnxRuntime;
-using Microsoft.ML.OnnxRuntime.Tensors;
+
 
 namespace IntexII.Controllers
 {
@@ -17,13 +16,13 @@ namespace IntexII.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public IRDSRepo repo;
-        private InferenceSession _session;
+      
 
     
 
-        public HomeController(ILogger<HomeController> logger, IRDSRepo temp, InferenceSession session)
+        public HomeController(ILogger<HomeController> logger, IRDSRepo temp)
         {
-            _session = session;
+
             _logger = logger;
             repo = temp;
         }
@@ -39,27 +38,97 @@ namespace IntexII.Controllers
             return View();
         }
 
-
-        public IActionResult Records( double severity = 0, int pageNum = 1)
+        
+        public IActionResult Records()
         {
+            var cities = repo.crashes
+                               .Select(x => new City() { city = x.city });
 
-            var length = 300;
+            ViewBag.city = cities.Select(x => x.city)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+
+            var severity = repo.crashes
+                                .Select(x => new Severity() { severity = x.crash_severity_id });
+
+            ViewBag.severity = severity.Select(x => x.severity)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+            var length = 30;
 
 
             var x = new CrashesViewModel
             {
                 crashes = repo.crashes
-                    .Where(x => x.crash_severity_id == severity || severity == 0)
-                    .Skip(length * (pageNum - 1))
                     .Take(length),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumCrashes = (severity == 0 ? repo.crashes.Count() : repo.crashes.Where(x => x.crash_severity_id == severity).Count()),
+                    TotalNumCrashes = repo.crashes.Count(),
                     CrashesPerPage = length,
-                    CurrentPage = pageNum
+                    CurrentPage = 1,
+                    
                 }
                 
+            };
+
+            return View(x);
+        }
+        [HttpPost]
+        public IActionResult Records(CrashesViewModel cvm)
+        {
+            
+            var cities = repo.crashes
+                               .Select(x => new City() { city = x.city });
+
+            ViewBag.city = cities.Select(x => x.city)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+
+            var severity = repo.crashes
+                                .Select(x => new Severity() { severity = x.crash_severity_id });
+
+            ViewBag.severity = severity.Select(x => x.severity)
+                                .Distinct()
+                                .OrderBy(x => x)
+                                .ToList();
+
+            var length = 30;
+
+
+            var x = new CrashesViewModel
+            {
+                crashes = repo.crashes
+                    .Where(x => x.crash_severity_id == cvm.Filter.severity || cvm.Filter.severity == 0)
+                    .Where(x => x.city == cvm.Filter.city || cvm.Filter.city == null)
+                    .Skip(length * (cvm.PageInfo.CurrentPage - 1))
+                    .Take(length),
+
+                PageInfo = new PageInfo
+                {
+                    TotalNumCrashes = ((cvm.Filter.severity == 0 && cvm.Filter.city == null) ?
+                    repo.crashes.Count()
+                    : (cvm.Filter.severity == 0) ?
+                    repo.crashes.Where(x => x.city == cvm.Filter.city).Count()
+                    : (cvm.Filter.city == null) ?
+                    repo.crashes.Where(x => x.crash_severity_id == cvm.Filter.severity).Count()
+                    : repo.crashes.Where(x => x.city == cvm.Filter.city).Where(x => x.crash_severity_id == cvm.Filter.severity).Count()
+                    ),
+
+                    CrashesPerPage = length,
+                    CurrentPage = cvm.PageInfo.CurrentPage,
+                    Page2 = cvm.PageInfo.CurrentPage - 1,
+                   Page4 = cvm.PageInfo.CurrentPage + 1
+                },
+
+                Filter = cvm.Filter
+
             };
 
             return View(x);
@@ -84,28 +153,7 @@ namespace IntexII.Controllers
    
 
 
-        [HttpGet]
-        public IActionResult ModelInput()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Prediction(ModelData data)
-        {
-            var result = _session.Run(new List<NamedOnnxValue>
-            {
-                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
-            });
-            Tensor<string> score = result.First().AsTensor<string>();
-
-            //ViewBag["prediction"] = score.First()
         
-
-            var prediction = new Prediction { PredictedValue = score.First() };
-            result.Dispose();
-            return View( prediction);
-        }
 
     }
 }

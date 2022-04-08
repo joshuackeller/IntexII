@@ -1,0 +1,34 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+@model CrashesViewModel
+
+<div>testing</div>
+
+<form method="post">
+    <label value="0">Severity</label><br/>
+    <select asp-for="Filter.severity">
+        <option>Select All</option>
+        @foreach (var a in ViewBag.severity)
+        {
+            <option value="@a">@a</option>
+        }
+
+    </select><br/>
+    <label>City</label><br />
+    <select asp-for="Filter.city">
+
+        <option value="@null">Select All</option>
+        @foreach (var b in ViewBag.city)
+        {
+            <option value="@b">@b</option>
+        }
+    </select>
+
+    <button type="submit">Add Filter</button>
+ 
+</form>

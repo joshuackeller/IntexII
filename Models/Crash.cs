@@ -39,7 +39,9 @@ namespace IntexII.Models
         public bool drowsy_driving { get; set; }
         public bool roadway_departure { get; set; }
         public bool outside_city_limits { get; set; }
-        public DateTime crash_date { get; set; }
+        public string crash_datetime { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
         // public DateTime crash_time { get; set; }
 
 

@@ -16,6 +16,7 @@
     <None Remove="Models\ViewModels\" />
     <None Remove="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" />
     <None Remove="Microsoft.ML.OnnxRuntime" />
+    <None Remove="Views\Home\Components\Filter\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.22" />
@@ -31,8 +32,6 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.23" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.1.2" />
-    <PackageReference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform" Version="3.6.0" />
-    <PackageReference Include="Microsoft.ML.OnnxRuntime" Version="1.11.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,6 +40,7 @@
     <Folder Include="Views\Admin\" />
     <Folder Include="Controllers\Infrastructure\" />
     <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Home\Components\Filter\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\lib\qrcode\" />
