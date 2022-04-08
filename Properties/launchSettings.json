@@ -1,4 +1,4 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -12,16 +12,27 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "RDS_USER": "administrator",
+        "RDS_PORT": "3306",
+        "GOO_CLIENTSECRET": "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",
+        "RDS_SERVER": "intex.cs1aykosn414.us-east-2.rds.amazonaws.com",
+        "GOO_CLIENTID": "571928373419-ncle90us3fclb9ld4c94bp1m0rc25cc3.apps.googleusercontent.com",
+        "APP_USER": "intexadmin@intexadmin.com",
+        "RDS_DATABASE": "intexx",
+        "RDS_PASSWORD": "iLOVEdog3",
+        "APP_ADMINEMAIL": "intexadmin@intexadmin.com",
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APP_PASSWORD": "Password1!",
+        "APP_EMAIL": "intexadmin@intexadmin.com"
       }
     },
     "IntexII": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }
 }

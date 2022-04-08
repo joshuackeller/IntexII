@@ -140,17 +140,6 @@ namespace IntexII
                     "notifications 'self' ; " +
                     "fullscreen '*' ; " +
                     "payment 'self' ; ");
-                    context.Response.Headers.Add(
-                    "Content-Security-Policy-Report-Only",
-                    "default-src 'self'; " +
-                    "script-src-elem 'self'" +
-                    "style-src-elem 'self'; " +
-                    "img-src 'self'; http://www.w3.org/" +
-                    "font-src 'self'" +
-                    "media-src 'self'" +
-                    "frame-src 'self'" +
-                    "connect-src "
-                    );
                     await next();
                 });
             }
@@ -162,6 +151,24 @@ namespace IntexII
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+
+            //CSP
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add(
+                   "Content-Security-Policy-Report-Only",
+                   "default-src 'self'; " +
+                   "script-src-elem 'self'" +
+                   "style-src-elem 'self'; " +
+                   "img-src 'self'; " +
+                   "font-src 'self'" +
+                   "media-src 'self'" +
+                   "frame-src 'self'" +
+                   "connect-src "
+                   );
+                await next();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
