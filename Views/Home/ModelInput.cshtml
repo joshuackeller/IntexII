@@ -1,133 +1,155 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Model Input";
 }
 
 @model ModelData
+    
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <html>
+    <body>
+        <br />
+        <br />
+        <br />
+        <br />
+            <div class="form-center">
+                <div class="d-inline-block">
+                    <h3>Crash Severity Prediction Calculator</h3>
+                    <p>Utilize our prediction model to predict the crash severity level of a potential crash that meets all of these requirements.</p>
+                    <form method="post" asp-controller="Home" asp-action="Prediction" class="align-content-center">
+                        <div class="row">
+                            <div class="col-6">
+                                <div>In Utah County?</div>
 
-<form method="post" asp-controller="Home" asp-action="Prediction">
+                                <div>
+                                    <input type="radio" asp-for="county_name_utah" value="1" />
+                                    <label asp-for="county_name_utah">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="county_name_utah" value="0" />
+                                    <label asp-for="county_name_utah">False</label>
+                                </div>
+                            </div>
 
-    <div>
-        <div>In Utah County?</div>
+                            <div class="col-6">
+                                <div>In Salt Lake County?</div>
 
-        <div>
-            <input type="radio" asp-for="county_name_utah" value="1" />
-            <label asp-for="county_name_utah">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="county_name_utah" value="0" />
-            <label asp-for="county_name_utah">False</label>
-        </div>
-    </div>
-    <div>
-        <div>In Salt Lake County?</div>
+                                <div>
+                                    <input type="radio" asp-for="county_name_saltlake" value="1" />
+                                    <label asp-for="county_name_saltlake">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="county_name_saltlake" value="0" />
+                                    <label asp-for="county_name_saltlake">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>In a Different County?</div>
 
-        <div>
-            <input type="radio" asp-for="county_name_saltlake" value="1" />
-            <label asp-for="county_name_saltlake">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="county_name_saltlake" value="0" />
-            <label asp-for="county_name_saltlake">False</label>
-        </div>
-    </div>
-    <div>
-        <div>In a Different County?</div>
+                                <div>
+                                    <input type="radio" asp-for="county_name_other" value="1" />
+                                    <label asp-for="county_name_other">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="county_name_other" value="0" />
+                                    <label asp-for="county_name_other">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>Outside City Limits?</div>
 
-        <div>
-            <input type="radio" asp-for="county_name_other" value="1" />
-            <label asp-for="county_name_other">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="county_name_other" value="0" />
-            <label asp-for="county_name_other">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Outside City Limits?</div>
+                                <div>
+                                    <input type="radio" asp-for="city_OUTSIDE_CITY_LIMITS" value="1" />
+                                    <label asp-for="city_OUTSIDE_CITY_LIMITS">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="city_OUTSIDE_CITY_LIMITS" value="0" />
+                                    <label asp-for="city_OUTSIDE_CITY_LIMITS">False</label>
+                                </div>
+                            </div>
 
-        <div>
-            <input type="radio" asp-for="city_OUTSIDE_CITY_LIMITS" value="1" />
-            <label asp-for="city_OUTSIDE_CITY_LIMITS">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="city_OUTSIDE_CITY_LIMITS" value="0" />
-            <label asp-for="city_OUTSIDE_CITY_LIMITS">False</label>
-        </div>
-    </div>
 
-   
-    <div>
-        <div>Roadway Departure?</div>
 
-        <div>
-            <input type="radio" asp-for="roadway_departure" value="1" />
-            <label asp-for="roadway_departure">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="roadway_departure" value="0" />
-            <label asp-for="roadway_departure">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Single Vehicle?</div>
+                            <div class="col-6">
+                                <div>Roadway Departure?</div>
 
-        <div>
-            <input type="radio" asp-for="single_vehicle" value="1" />
-            <label asp-for="single_vehicle">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="single_vehicle" value="0" />
-            <label asp-for="single_vehicle">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Night/Dark Conditions?</div>
+                                <div>
+                                    <input type="radio" asp-for="roadway_departure" value="1" />
+                                    <label asp-for="roadway_departure">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="roadway_departure" value="0" />
+                                    <label asp-for="roadway_departure">False</label>
+                                </div>
+                            </div>
 
-        <div>
-            <input type="radio" asp-for="night_dark_condition" value="1" />
-            <label asp-for="night_dark_condition">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="night_dark_condition" value="0" />
-            <label asp-for="night_dark_condition">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Older Driver Involved?</div>
 
-        <div>
-            <input type="radio" asp-for="older_driver_involved" value="1" />
-            <label asp-for="older_driver_involved">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="older_driver_involved" value="0" />
-            <label asp-for="older_driver_involved">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Teenage Driver Involved?</div>
+                            <div class="col-6">
+                                <div>Single Vehicle?</div>
 
-        <div>
-            <input type="radio" asp-for="teenage_driver_involved" value="1" />
-            <label asp-for="teenage_driver_involved">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="teenage_driver_involved" value="0" />
-            <label asp-for="teenage_driver_involved">False</label>
-        </div>
-    </div>
-    <div>
-        <div>Intersection Related?</div>
+                                <div>
+                                    <input type="radio" asp-for="single_vehicle" value="1" />
+                                    <label asp-for="single_vehicle">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="single_vehicle" value="0" />
+                                    <label asp-for="single_vehicle">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>Night/Dark Conditions?</div>
 
-        <div>
-            <input type="radio" asp-for="intersection_related" value="1" />
-            <label asp-for="intersection_related">True</label>
-        </div>
-        <div>
-            <input type="radio" asp-for="intersection_related" value="0" />
-            <label asp-for="intersection_related">False</label>
-        </div>
-    </div>
+                                <div>
+                                    <input type="radio" asp-for="night_dark_condition" value="1" />
+                                    <label asp-for="night_dark_condition">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="night_dark_condition" value="0" />
+                                    <label asp-for="night_dark_condition">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>Older Driver Involved?</div>
 
-    <button type="submit">Calculate</button>
-</form>
+                                <div>
+                                    <input type="radio" asp-for="older_driver_involved" value="1" />
+                                    <label asp-for="older_driver_involved">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="older_driver_involved" value="0" />
+                                    <label asp-for="older_driver_involved">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>Teenage Driver Involved?</div>
+
+                                <div>
+                                    <input type="radio" asp-for="teenage_driver_involved" value="1" />
+                                    <label asp-for="teenage_driver_involved">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="teenage_driver_involved" value="0" />
+                                    <label asp-for="teenage_driver_involved">False</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div>Intersection Related?</div>
+
+                                <div>
+                                    <input type="radio" asp-for="intersection_related" value="1" />
+                                    <label asp-for="intersection_related">True</label>
+                                </div>
+                                <div>
+                                    <input type="radio" asp-for="intersection_related" value="0" />
+                                    <label asp-for="intersection_related">False</label>
+                                </div>
+                            </div>
+
+                            <br />
+                        </div>
+                        <button type="submit" class="btn-primary">Calculate</button>
+
+                    </form>
+                </div>
+            </div>
+    </body>
+    </html>

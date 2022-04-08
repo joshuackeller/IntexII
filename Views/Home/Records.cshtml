@@ -6,60 +6,66 @@
 }
 
 @model CrashesViewModel
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/css/site.css" rel="stylesheet" />
+    <br />
+    <br />
+    <br />
 
-<h2>Crash Records</h2>
+    <h2>Crash Records</h2>
 
-<body>
-    <div class="row m-1 p-1">
+    <body>
+        <div class="row m-1 p-1">
 
-        <div id="types" class="col-3 p-1" >
-            <vc:crash></vc:crash>
-        </div>
-
-
-        <div class="col-9">
-            <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <th>Crash ID</th>
-                        <th>Main Road Name</th>
-                        <th>City</th>
-                        <th>County Name</th>
-                        <th>Crash Severity</th>
+            <div id="types" class="col-3 p-1">
+                <vc:crash></vc:crash>
+            </div>
 
 
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var a in Model.crashes)
-                    {
+            <div class="col-9">
+                <table class="table table-bordered table-striped">
+                    <thead>
                         <tr>
-                            <td>@a.crash_id</td>
-                            <td>@a.main_road_name</td>
-                            <td>@a.city</td>
-                            <td>@a.county_name</td>
-                            <td>@a.crash_severity_id</td>
 
-                <td>
-                    <a class="nav-link btn btn-primary btn-sm text-white" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
+                            <th>Main Road Name</th>
+                            <th>City</th>
+                            <th>County Name</th>
+                            <th>Crash Severity</th>
 
 
+                        </tr>
+                    </thead>
 
-                            </td>
+                    <tbody>
+                        @foreach (var a in Model.crashes)
+                        {
+                            <tr>
+
+                                <td>@a.main_road_name</td>
+                                <td>@a.city</td>
+                                <td>@a.county_name</td>
+                                <td>@a.crash_severity_id</td>
+
+                                <td>
+                                    <a class="nav-link btn btn-primary btn-sm text-white" asp-area="" asp-controller="Home" asp-action="SingleRecord" asp-route-id="@a.crash_id">View Details</a>
+
+
+
+                                </td>
 
                             </tr>
 
 
-                     
-                    }
-                </tbody>
-            </table>
 
+                        }
+                    </tbody>
+                </table>
+
+            </div>
         </div>
-    </div>
 
 
- 
-</body>
-<div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>
+
+    </body>
+
+    <div style="margin-top: 10px; margin-bottom: 10px;" page-dynamic="@Model.PageInfo" page-action="Records" page-class-normal="btn btn-outline-dark" page-class-selected="btn btn-primary"></div>

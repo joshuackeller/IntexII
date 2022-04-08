@@ -1,61 +1,98 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - IntexII</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~assets/css/style.css" />
+    <link href="~/assets/css/style.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" type="image/x-icon" href="~/2-13.png">
     <title>Document</title>
 </head>
-<body>
-    <!-- Cookie banner -->
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
-    <script>
+
+<!-- Cookie banner -->
+<script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js" data-cfasync="false"></script>
+<script>
     window.cookieconsent.initialise({
-            "palette": {
-                "popup": {
-                    "background": "#7e7f9a",
-                    "text": "#ffffff"
-                },
-                "button": {
-                    "background": "#353531",
-                    "text": "#ffffff"
-                }
+        "palette": {
+            "popup": {
+                "background": "#7e7f9a",
+                "text": "#ffffff"
             },
-            "content": {
-                "message": "This website uses cookies to ensure you get the best experiences on our website. By proceeding, you are consenting to our use of cookies and agreeing to our Privacy Policy",
-                "dismiss": "Got it!",
-                "href": "/Home/Privacy"
+            "button": {
+                "background": "#353531",
+                "text": "#ffffff"
             }
-        });</script>
+        },
+        "content": {
+            "message": "This website uses cookies to ensure you get the best experiences on our website. By proceeding, you are consenting to our use of cookies and agreeing to our Privacy Policy",
+            "dismiss": "Got it!",
+            "href": "/Home/Privacy"
+        }
+    });</script>
     </script>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">IntexII</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Records">Records</a>
-                        </li>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 
-                    </ul>
-                </div>
+    <title>Utah Driving Collision</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet" />
+
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css"
+          rel="stylesheet" />
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+          rel="stylesheet" />
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css"
+          rel="stylesheet" />
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+            <div class="logo me-auto">
+                <h1><a asp-area="" asp-controller="Home" asp-action="Index">Utah Driving Collision</a></h1>
+                <!-- Uncomment below if you prefer to use an image logo -->
+                <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
             </div>
-        </nav>
-    </header>
 
+            <nav id="navbar" class="navbar order-last order-lg-0">
+                <ul>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Records">Records</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Home" asp-action="ModelInput">Prediction Model</a>
+                    </li>
+                    <li>
+                        <a asp-area="" asp-controller="Admin" asp-action="Crashes">Admin Login</a>
+                    </li>
+                    @*<li>
+                        <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                    </li>*@
+                </ul>
+            </nav>
+            <br />
+            <br />
+        </div>
+    </header>
+    <!-- End Header -->
 
 
 
@@ -66,24 +103,53 @@
     </div>
 
     <footer class="border-top footer text-muted d-flex justify-content-between">
-        <div class="container">
+        <div class="container" style="align-content: flex-start">
             &copy; 2022 - IntexII - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-        <div>
+        @*<div class="containter" style="align-content: flex-start">
             <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="Crashes">Admin</a>
-        </div>
+        </div>*@
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Vendor JS Files -->
+    <script src="~/assets/vendor/purecounter/purecounter.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="~/assets/js/main.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
-</html>
+<!-- ======= Footer ======= -->
+
+<footer>
+    <div class="container d-md-flex py-4">
+        <div class="me-md-auto text-center text-md-start">
+
+        </div>
+
+    </div>
+</footer>
+<!-- End Footer -->
+
+<a href="#"
+   class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
 
 
 
-<script>// Cookie banner
+
+<script>
+    // Cookie banner
     if (localStorage.getItem('cookieSeen') != 'shown') {
         $(".cookie-banner").delay(2000).fadeIn();
         localStorage.setItem('cookieSeen', 'shown')
@@ -92,4 +158,4 @@
     $('.close').click(function (e) {
         $('.cookie-banner').fadeOut();
     });</script>
-</html>
+

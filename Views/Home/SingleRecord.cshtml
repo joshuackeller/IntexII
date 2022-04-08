@@ -7,6 +7,13 @@
 }
 @model Crash
 
+<br />
+<br />
+<br />
+<br />
+<br />
+
+    <link href="~/assets/css/style.css" rel="stylesheet" />
     <div class="py-10">
         <h3>Info</h3>
         <div>ID: @Model.crash_id</div>
@@ -15,7 +22,7 @@
         <div>UTM Latitude: @Model.lat_utm_y</div>
         <div>UTM Longitude: @Model.long_utm_x</div>
         <div>Main Road: @Model.main_road_name</div>
-        <div>Crash Date: @Model.crash_date</div>
+        <div>Crash Date: @Model.crash_datetime</div>
 
         <div>City: @Model.city</div>
         <div>County: @Model.county_name</div>

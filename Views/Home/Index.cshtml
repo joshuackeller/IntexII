@@ -2,7 +2,243 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- ======= Hero Section ======= -->
+<section id="hero"
+         class="d-flex flex-column justify-content-center align-items-center">
+    <div class="container text-center text-md-left" data-aos="fade-up">
+        <h1>Utah <span>Driving Collision</span></h1>
+        <h2>Utah's Department of Motor Vehicles Collision Database</h2>
+        <a href="#about" class="btn-get-started scrollto">Learn More</a>
+    </div>
+</section>
+<!-- End Hero -->
+
+<main id="main">
+    <!-- ======= What We Do Section ======= -->
+    <section id="what-we-do" class="what-we-do">
+        <div class="container">
+            <div class="section-title">
+                <h2>What's the number 1 cause of car accidents in Utah?</h2>
+                <!-- <p>Magnam dolores commodi suscipit consequatur ex aliquid</p> -->
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-tachometer"></i></div>
+                        <h4><a href="">Speeding</a></h4>
+                        <p>
+                            In 2016, excessive speed was a factor in 38% of fatal crashes,
+                            and speed-related crashes were 2.7 times more likely to be
+                            more fatal than others. Speed limits are the law, they are
+                            there for a reason.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-phone"></i></div>
+                        <h4><a href="">Cell Phones</a></h4>
+                        <p>
+                            Did you know it's illegal to use a cellphone in any way except
+                            for GPS apps or hands-free voice talking while driving?
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0">
+                    <div class="icon-box">
+                        <div class="icon"><i class="bx bx-food-menu"></i></div>
+                        <h4><a href="">Distracted Drivers</a></h4>
+                        <p>
+                            Distracted driving is more than just texting. It includes
+                            reading, eating, drinking, talking to passengers, adjusting
+                            the temperature controls, and anything else that takes your
+                            focus off the road.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End What We Do Section -->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <img src="assets/img/5.png" class="img-fluid" alt="" />
+                </div>
+                <div class="col-lg-6 pt-4 pt-lg-0">
+                    <h3>About Us</h3>
+                    <p>
+                        Welcome to the Utah Driving Collisions Database. This website was created to help raise awareness of what is happening on Utah roads. 
+                    </p>
+                    <ul>
+                        <li>
+                            <i class="bx bx-check-double"></i> Incorporate this data in your research around previous crash data.
+                        </li>
+                        <li>
+                            <i class="bx bx-check-double"></i> Utilize our prediction calculator to predict crash severity of a future crash. 
+                        </li>
+                    </ul>
+                    <div class="row icon-boxes">
+                        <div class="col-md-6">
+                            <i class="bx bx-receipt"></i>
+                            <h4>Zero Fatalities</h4>
+                            <p>
+                                We hope this website helps raise awareness of dangerous driving and pledge to get Utah's roads to have zero fatalities.'
+                            </p>
+                        </div>
+                        <div class="col-md-6 mt-4 mt-md-0">
+                            <i class="bx bx-cube-alt"></i>
+                            <h4>Predictive Analytics</h4>
+                            <p>
+                                Our model will help you predict the severity of a car crash on Utah roads. Take this as a reminder to always stay cautious and aware while driving. 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Section -->
+    <!-- ======= Skills Section ======= -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="row skills-content">
+                <h3>Crash Information for 2021</h3>
+                <div class="col-lg-6">
+                    <div class="progress">
+                        <span class="skill">No injury <i class="val">70.22%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 aria-valuenow="70.22"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <span class="skill">Possible injury <i class="val">15.96%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 aria-valuenow="15.96"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <span class="skill">Suspected minor injury <i class="val">11.03%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 aria-valuenow="11.03"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="progress">
+                        <span class="skill">Serious injury <i class="val">2.31%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 aria-valuenow="2.31"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+
+                    <div class="progress">
+                        <span class="skill">Fatal <i class="val">.48%</i></span>
+                        <div class="progress-bar-wrap">
+                            <div class="progress-bar"
+                                 role="progressbar"
+                                 aria-valuenow=".48"
+                                 aria-valuemin="0"
+                                 aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- End Skills Section -->
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-6">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0"
+                              data-purecounter-end="61247"
+                              data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Total Crash Count</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0"
+                              data-purecounter-end="43007"
+                              data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Total Property Damage Only Crash Count</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0"
+                              data-purecounter-end="17946"
+                              data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Total Injury Crash Count</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-6 mt-5 mt-lg-0">
+                    <div class="count-box">
+                        <i class="bi bi-people"></i>
+                        <span data-purecounter-start="0"
+                              data-purecounter-end="294"
+                              data-purecounter-duration="1"
+                              class="purecounter"></span>
+                        <p>Total Fatal Crash Count</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Counts Section -->
+    <!-- ======= Footer ======= -->
+
+    <footer>
+        <div class="container d-md-flex py-4">
+            <div class="me-md-auto text-center text-md-start">
+
+            </div>
+
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+    <a href="#"
+       class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+
+   </main>
