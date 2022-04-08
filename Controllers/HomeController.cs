@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using IntexII.Models;
 using IntexII.Models.ViewModels;
+using Microsoft.ML.OnnxRuntime;
+using Microsoft.ML.OnnxRuntime.Tensors;
 
 
 namespace IntexII.Controllers
@@ -16,13 +18,15 @@ namespace IntexII.Controllers
         private readonly ILogger<HomeController> _logger;
 
         public IRDSRepo repo;
-      
 
-    
 
-        public HomeController(ILogger<HomeController> logger, IRDSRepo temp)
+        private InferenceSession _session;
+
+
+
+        public HomeController(ILogger<HomeController> logger, IRDSRepo temp, InferenceSession session)
         {
-
+            _session = session;
             _logger = logger;
             repo = temp;
         }
@@ -150,10 +154,31 @@ namespace IntexII.Controllers
         }
 
 
-   
+        [HttpGet]
+        public IActionResult ModelInput()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Prediction(ModelData data)
+        {
+            var result = _session.Run(new List<NamedOnnxValue>
+            {
+                NamedOnnxValue.CreateFromTensor("float_input", data.AsTensor())
+            });
+            Tensor<string> score = result.First().AsTensor<string>();
+
+            //ViewBag["prediction"] = score.First()
 
 
-        
+            var prediction = new Prediction { PredictedValue = score.First() };
+            result.Dispose();
+            return View(prediction);
+        }
+
+
+
 
     }
 }

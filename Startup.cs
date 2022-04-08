@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using IntexII.Models;
-
+using Microsoft.ML.OnnxRuntime;
 
 namespace IntexII
 {
@@ -80,7 +80,7 @@ namespace IntexII
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
-            
+
 
             services.AddDbContext<RDSContext>(options =>
             {
@@ -91,7 +91,7 @@ namespace IntexII
 
 
 
-           services.Configure<IdentityOptions>(options =>
+            services.Configure<IdentityOptions>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequiredLength = 8;
@@ -116,7 +116,8 @@ namespace IntexII
             services.AddScoped<IRDSRepo, EFRDSRepo>();
             //services.AddScoped<ITeamsRepository, EFTeamsRepository>();
 
-        
+            services.AddSingleton<InferenceSession>(
+                new InferenceSession("wwwroot/intex.onnx"));
 
         }
 
@@ -149,9 +150,10 @@ namespace IntexII
             app.UseEndpoints(endpoints =>
             {
 
+
                 endpoints.MapControllerRoute(
                      name: "filter",
-                     pattern: "{pageNum}",
+                     pattern: "{severity}/{pageNum}",
                      defaults: new { controller = "Home", action = "Records" });
 
                 endpoints.MapControllerRoute(
